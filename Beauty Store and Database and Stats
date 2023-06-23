@@ -1,0 +1,25 @@
+-- Creat a beauty store database
+
+CREATE TABLE beauty (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, price INTEGER, rating INTEGER); 
+
+INSERT INTO beauty VALUES (1, "mascara", 5, 8, 4.1);
+INSERT INTO beauty VALUES (2, "lipstick", 3, 10, 4.3); 
+INSERT INTO beauty VALUES (3, "blush", 7, 12, 5.0); 
+INSERT INTO beauty VALUES (4, "eyeshadow", 9, 6, 4.8); 
+INSERT INTO beauty VALUES (5, "gloss", 3, 5, 4.6); 
+INSERT INTO beauty VALUES (6, "brushes", 5, 4, 3.6); 
+INSERT INTO beauty VALUES (7, "sponges", 4, 6, 3.7); 
+INSERT INTO beauty VALUES (8, "eyeliner", 2, 7, 3.5);
+INSERT INTO beauty VALUES (9, "foundation", 5, 15, 4.9);
+INSERT INTO beauty VALUES (10, "primer", 6, 10, 4.7);
+INSERT INTO beauty VALUES (11, "concealer", 7, 13, 5.0); 
+INSERT INTO beauty VALUES (12, "brow gel", 8, 8, 5.0); 
+INSERT INTO beauty VALUES (13, "setting spray", 5, 8, 4.3);
+INSERT INTO beauty VALUES (14, "setting powder", 4, 12, 4.7);
+INSERT INTO beauty VALUES (15, "brow pencil", 6, 9, 4.9);
+
+-- Display the beauty database ordered by prce
+SELECT * FROM beauty ORDER BY price;
+
+--What is the sum of all quanities?
+SELECT SUM(price) FROM beauty;
