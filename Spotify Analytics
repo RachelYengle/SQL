@@ -54,7 +54,7 @@ AVG(s.popularity) AS average_popularity
 FROM SpotifyData s
 GROUP BY s.artist_name,
 
-SELECT  arists_name,
+SELECT  artist_name,
         average_popularity,
         'Top Star' AS tag
 FROM popularity_average_CTE
