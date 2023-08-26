@@ -46,7 +46,7 @@ LIMIT 10
 
 #Next, I wrote a CTE with the Spotify data table, calculating the average popularity for the artists. 
 #Then for every artist with an average popularity of 90 or above I showed their name, 
-#thier average popularity and labled them as a "Top Star"
+#thier average popularity and labled them as a "Top Star".
 
 WITH popularity_average_CTE AS ( 
 SELECT s.artist_name,
