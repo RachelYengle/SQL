@@ -1,0 +1,36 @@
+#For this project I am exploring the database by asking a few questions
+
+#Which customers are not in the USA?
+SELECT FirstName, LastName, CustomerID, Country
+FROM chinook.customers
+WHERE Country <> "USA"
+
+#What were the total sales made by each agent? 
+SELECT emp.FirstName, emp.LastName,
+ROUND(SUM(Inv.Total),2) AS 'Total Sales'
+FROM chinook.Employees emp
+
+JOIN chinook.Customers cust
+ON cust.SupportRepID = emp.EmployeeId
+
+JOIN chinook.Invoices Inv
+ON Inv.CustomerId = cust.CustomerId
+
+WHERE emp.Title = 'Sales Support Agent'
+GROUP BY emp.FirstName
+
+#Which sales agent made the most dollars in sales in 2009?
+SELECT emp.FirstName, emp.LastName,
+ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
+FROM chinook.Employees emp
+
+JOIN chinook.Customers cust 
+ON cust.SupportRepId = emp.EmployeeId
+
+JOIN chinook.Invoices Inv 
+ON Inv.CustomerId = cust.CustomerId
+
+WHERE emp.Title = 'Sales Support Agent'
+AND Inv.InvoiceDate LIKE '2009%'
+GROUP BY emp.FirstName
+ORDER BY (ROUND(SUM(Inv.Total),2)) DESC LIMIT 1
