@@ -1,0 +1,46 @@
+This report was built using Pandas and Python on Google Codelab
+
+Link to Database: https://docs.google.com/spreadsheets/d/17W1wScNmqgHKMSWOvZDhnyqlTy0ZEriaIbpSOI11iCQ/edit?usp=sharing 
+
+Reccomendation Report
+Goal: Provide a recommendation to increase profits by 10% this year.
+
+Natalie has stated a goal of increasing profits by 10% this year.Marketing would like to tailor their efforts and focus on a subcategory, perhaps even an individual product, 
+that has the highest profit. One way to accomplish this is by first determining the highest profitable Sub-Category, then identifying and analyzing the underperforming product. 
+The focus will assist on improving marketing strategies within the underperforming Region and Segment.
+
+First, I've calculated the profits and sales for all Sub-Categories. The Copiers are the first most profitable sub-category of seventeen with profits of $55,617 and sales of $149,528. 
+Following second and third is Phones and Accessories at ($44,515 and $41,936 in profit). I then compared the profits and sales for Sub-Category, Copiers, within 4-years of data.
+In annual sales of copiers peaked in 2016 and had sold well in 2017 and 2018. Overall, this informs that Copiers has returned significant profit each year, confirming it being the most 
+profitable Sub-Category.
+I also identified all 13 products, within the Copier Sub-category, are profitable. Table1 shows how only three single products of 13 in total make up 66% of Copiers profits ($55,617). 
+Table2 is Table1 with adjusted sort order, lowest to highest. The Lowest profitable product is 'Hewlett Packard 310 Color Digital Copier', it made up to $839 in 4-years.
+To encourage potential product marketing efforts within Copiers (most profitable), I have identified the least profitable product's region and segment. 
+
+The information is as follows:
+The Copiers Sub-Category regional and segment analysis shows it's profitable in all regions (Table 3), (East- $17,022, West- $19,327, Central- $15,608) although South with $3,658 in profit had a drastic difference.
+Now, to analyze 'Hewlett Packard 310 Color Digital Copier' (underperforming product), I've created Table4 which shows the interaction between both Segment and Region.
+Table5 demonstrates how 'Hewlett Packard 310 Color Digital Copier' is underperforming in the East region where Consumers' are the least profitable.
+
+Recommendations: Based on the analysis above, I recommend Office Solutions place their marketing efforts on encouraging profit growth towards consumers in the eastern region 
+with the product 'Hewlett Packard 310 Color Digital Copier'. This can implement Natalie's future idea to better tailor the marketing efforts and focus on those subcategories, 
+or even individual products, with the highest profit.
+
+Table1 - Profitbale Products Highest to Lowest 
+CopierProdProfSales = JustCopiers [["Product Name", "Profit", "Sales"]].groupby("Product Name").sum().sort_values("Profit", ascending = False)
+display(CopierProdProfSales.head(5))
+
+Table2 - Lowest Products Lowest to Highest
+CopierProdProfSales = JustCopiers [["Product Name", "Profit", "Sales"]].groupby("Product Name").sum().sort_values("Profit")
+display(CopierProdProfSales.head(5))
+
+Table3 - Copiers Profit by Region
+CopiersRegion = JustCopiers [["Region","Profit","Sales"]]
+RegionTotalProfSales = CopiersRegion.groupby(by="Region").sum().sort_values(by="Profit")
+display(RegionTotalProfSales.head(10))
+
+Table4 - Interraction between Product, Segment, and Region
+CopiersSegProfPNRegion = JustCopiers [["Region","Profit","Segment","Product Name"]]
+PNCopiers = CopiersSegProfPNRegion.loc[CopiersSegProfPNRegion["Product Name"]== "Hewlett Packard 310 Color Digital Copier"]
+PNProfSeg = PNCopiers.groupby(by=["Segment","Product Name","Region"]).sum()
+display(PNProfSeg)
